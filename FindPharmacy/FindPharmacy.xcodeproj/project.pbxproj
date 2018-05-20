@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		347FA77120AD6EA00010AF41 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347FA77020AD6EA00010AF41 /* SearchViewController.swift */; };
+		347FA77320B165980010AF41 /* ViewController_Pharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347FA77220B165980010AF41 /* ViewController_Pharmacy.swift */; };
 		34DC867920A2D9F700487C3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC867820A2D9F700487C3A /* AppDelegate.swift */; };
 		34DC867B20A2D9F700487C3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC867A20A2D9F700487C3A /* ViewController.swift */; };
 		34DC867E20A2D9F700487C3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34DC867C20A2D9F700487C3A /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		347FA77020AD6EA00010AF41 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		347FA77220B165980010AF41 /* ViewController_Pharmacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Pharmacy.swift; sourceTree = "<group>"; };
 		34DC867520A2D9F700487C3A /* FindPharmacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindPharmacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DC867820A2D9F700487C3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34DC867A20A2D9F700487C3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				34DC868120A2D9F700487C3A /* LaunchScreen.storyboard */,
 				34DC868420A2D9F700487C3A /* Info.plist */,
 				347FA77020AD6EA00010AF41 /* SearchViewController.swift */,
+				347FA77220B165980010AF41 /* ViewController_Pharmacy.swift */,
 			);
 			path = FindPharmacy;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				347FA77120AD6EA00010AF41 /* SearchViewController.swift in Sources */,
 				34DC867B20A2D9F700487C3A /* ViewController.swift in Sources */,
 				34DC867920A2D9F700487C3A /* AppDelegate.swift in Sources */,
+				347FA77320B165980010AF41 /* ViewController_Pharmacy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
