@@ -12,13 +12,23 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var Search_City: UITextField!
     @IBOutlet weak var Search_County_District: UITextField!
     
+    var city = ""
+    var city_utf8 = ""
+    
+    var count_district = ""
+    var count_district_utf8 = ""
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        city = Search_City.text!
+        city_utf8 = city.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        count_district = Search_County_District.text!
+        count_district_utf8 = count_district.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         if segue.identifier == "segueToPharmacy"{
             if let navController = segue.destination as? UINavigationController{
                 if let viewController = navController.topViewController as?
                     ViewController_Pharmacy{
-                    viewController.url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&Q0=" + Search_City.text! + "&QT=1&ORD=NAME&pageNo=1&startPage=1&numOfRows=10&pageSize=10"
+                    viewController.url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&Q0=\(city_utf8)&Q1=\(count_district_utf8)&QT=1&ORD=NAME&pageNo=1&startPage=1&numOfRows=20&pageSize=20"
                 }
             }
         }
