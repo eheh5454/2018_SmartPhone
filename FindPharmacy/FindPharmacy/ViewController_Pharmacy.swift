@@ -11,6 +11,10 @@ import UIKit
 class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewDataSource {
     @IBOutlet weak var tbData: UITableView!
     
+    @IBAction func doneToPharmacyTable(segue:UIStoryboardSegue){
+        
+    }
+    
     var parser = XMLParser()
     
     var posts = NSMutableArray()
@@ -21,6 +25,9 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
     var title1 = NSMutableString()
     var tel = NSMutableString()
     var hpid = NSMutableString()
+    
+    var XPos = NSMutableString()
+    var YPos = NSMutableString()
     
     var url:String?
     
@@ -60,7 +67,11 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
             hpid = NSMutableString()
             hpid = ""
             
-            
+            //위도 경도
+            XPos = NSMutableString()
+            XPos = ""
+            YPos = NSMutableString()
+            YPos = ""
         }
     }
     
@@ -72,6 +83,13 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
             tel.append(string)
         }else if element.isEqual(to: "hpid"){
             hpid.append(string)
+        }
+        //위도 경도 찾기
+        else if element.isEqual(to: "wgs84Lat"){
+            XPos.append(string)
+        }
+        else if element.isEqual(to: "wgs84Lon"){
+            YPos.append(string)
         }
     }
     
@@ -85,6 +103,13 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
             }
             if !hpid.isEqual(nil){
                 elements.setObject(hpid, forKey: "hpid" as NSCopying)
+            }
+            //위도 경도
+            if !XPos.isEqual(nil){
+                elements.setObject(XPos, forKey: "XPos" as NSCopying)
+            }
+            if !YPos.isEqual(nil){
+                elements.setObject(YPos, forKey: "YPos" as NSCopying)
             }
             
             posts.add(elements)
@@ -112,8 +137,10 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
             if let cell = sender as? UITableViewCell{
                 let indexPath = tbData.indexPath(for: cell)
                 pharmacycode = (posts.object(at: (indexPath?.row)!) as AnyObject).value(forKey: "hpid") as! NSString as String
-                if let detailPharmacyTableViewController = segue.destination as? DetailPharmacyTableViewController{
-                    detailPharmacyTableViewController.url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyBassInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&HPID=\(pharmacycode)&pageNo=1&startPage=1&numOfRows=10&pageSize=10"
+                if let navController = segue.destination as? UINavigationController{
+                    if let detailPharmacyTableViewController = navController.topViewController as? DetailPharmacyTableViewController{
+                        detailPharmacyTableViewController.url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyBassInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&HPID=\(pharmacycode)&pageNo=1&startPage=1&numOfRows=10&pageSize=10"
+                    }
                 }
             }
         }

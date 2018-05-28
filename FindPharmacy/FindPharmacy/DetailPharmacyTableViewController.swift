@@ -11,6 +11,13 @@ import UIKit
 class DetailPharmacyTableViewController: UITableViewController, XMLParserDelegate {
     @IBOutlet var detailTableView: UITableView!
     
+    @IBAction func AddToBookmark(_ sender: Any) {
+        let bookmark = BookmarkTableViewController()
+        bookmark.posts.append(posts[0])
+        
+        print("add sucess!")
+    }
+    
     var url: String?
     
     var parser = XMLParser()

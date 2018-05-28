@@ -7,10 +7,28 @@
 //
 
 import UIKit
+import Speech
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var Search_City: UITextField!
     @IBOutlet weak var Search_County_District: UITextField!
+    
+    @IBOutlet weak var Start_City_Transcribe_Button: UIButton!
+    @IBOutlet weak var Stop_City_Transcribe_Button: UIButton!
+    
+    @IBAction func Start_City_transcribe(_ sender: Any) {
+        Start_City_Transcribe_Button.isEnabled = false
+        Stop_City_Transcribe_Button.isEnabled = true
+        try! startSession()
+    }
+    @IBAction func Stop_City_transcribe(_ sender: Any) {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            speechRecognitionRequest?.endAudio()
+            Start_City_Transcribe_Button.isEnabled = true
+            Stop_City_Transcribe_Button.isEnabled = false
+        }
+    }
     
     @IBAction func doneToSearch(segue:UIStoryboardSegue){
         
@@ -37,9 +55,88 @@ class SearchViewController: UIViewController {
         }
     }
     
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier:"ko-Kr"))!
+    
+    private var speechRecognitionRequest:
+    SFSpeechAudioBufferRecognitionRequest?
+    private var speechRecognitionTask: SFSpeechRecognitionTask?
+    private let audioEngine = AVAudioEngine()
+    
+    func startSession() throws {
+        
+        if let recognitionTask = speechRecognitionTask {
+            recognitionTask.cancel()
+            self.speechRecognitionTask = nil
+        }
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        try audioSession.setCategory(AVAudioSessionCategoryRecord)
+        
+        speechRecognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        guard let recognitionRequest = speechRecognitionRequest else { fatalError("SFSpeechAudioBufferRecognitionRequest object creation failed") }
+        
+        let inputNode = audioEngine.inputNode
+        
+        recognitionRequest.shouldReportPartialResults = true
+        
+        speechRecognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            
+            var finished = false
+            
+            if let result = result {
+                
+                self.Search_City.text = result.bestTranscription.formattedString
+                finished = result.isFinal
+            }
+            
+            if error != nil || finished {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.speechRecognitionRequest = nil
+                self.speechRecognitionTask = nil
+                
+                self.Start_City_Transcribe_Button.isEnabled = true
+            }
+        }
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            
+            self.speechRecognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        try audioEngine.start()
+    }
+    
+    func authorizeSR() {
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            
+            OperationQueue.main.addOperation {
+                switch authStatus {
+                case .authorized:
+                    self.Start_City_Transcribe_Button.isEnabled = true
+                    
+                case .denied:
+                    self.Start_City_Transcribe_Button.isEnabled = false
+                    self.Start_City_Transcribe_Button.setTitle("Speech recognition access denied by user", for: .disabled)
+                    
+                case .restricted:
+                    self.Start_City_Transcribe_Button.isEnabled = false
+                    self.Start_City_Transcribe_Button.setTitle("Speech recognition restricted on device", for: .disabled)
+                    
+                case .notDetermined:
+                    self.Start_City_Transcribe_Button.isEnabled = false
+                    self.Start_City_Transcribe_Button.setTitle("Speech recognition not authorized", for: .disabled)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        authorizeSR()
 
         // Do any additional setup after loading the view.
     }
