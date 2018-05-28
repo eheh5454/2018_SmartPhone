@@ -11,7 +11,6 @@ import UIKit
 class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewDataSource {
     @IBOutlet weak var tbData: UITableView!
     
-    
     var parser = XMLParser()
     
     var posts = NSMutableArray()
@@ -21,8 +20,11 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
     
     var title1 = NSMutableString()
     var tel = NSMutableString()
+    var hpid = NSMutableString()
     
     var url:String?
+    
+    var pharmacycode = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,8 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
             title1 = ""
             tel = NSMutableString()
             tel = ""
+            hpid = NSMutableString()
+            hpid = ""
             
             
         }
@@ -64,8 +68,10 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
     {
         if element.isEqual(to: "dutyName"){
             title1.append(string)
-        }else if element.isEqual(to: "dutyTell"){
+        }else if element.isEqual(to: "dutyMapimg"){
             tel.append(string)
+        }else if element.isEqual(to: "hpid"){
+            hpid.append(string)
         }
     }
     
@@ -75,7 +81,10 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
                 elements.setObject(title1, forKey: "dutyName" as NSCopying)
             }
             if !tel.isEqual(nil){
-                elements.setObject(tel, forKey: "tell" as NSCopying)
+                elements.setObject(tel, forKey: "dutyMapimg" as NSCopying)
+            }
+            if !hpid.isEqual(nil){
+                elements.setObject(hpid, forKey: "hpid" as NSCopying)
             }
             
             posts.add(elements)
@@ -92,11 +101,21 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "dutyName") as!
             NSString as String
-        cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "tell") as!
+        cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "dutyMapimg") as!
             NSString as String
         
         return cell
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "segueToPharmacyDetail"{
+            if let cell = sender as? UITableViewCell{
+                let indexPath = tbData.indexPath(for: cell)
+                pharmacycode = (posts.object(at: (indexPath?.row)!) as AnyObject).value(forKey: "hpid") as! NSString as String
+                if let detailPharmacyTableViewController = segue.destination as? DetailPharmacyTableViewController{
+                    detailPharmacyTableViewController.url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyBassInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&HPID=\(pharmacycode)&pageNo=1&startPage=1&numOfRows=10&pageSize=10"
+                }
+            }
+        }
+    }
 }

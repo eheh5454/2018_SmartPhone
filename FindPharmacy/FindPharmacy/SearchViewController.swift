@@ -12,6 +12,9 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var Search_City: UITextField!
     @IBOutlet weak var Search_County_District: UITextField!
     
+    @IBAction func doneToSearch(segue:UIStoryboardSegue){
+        
+    }
     var city = ""
     var city_utf8 = ""
     
