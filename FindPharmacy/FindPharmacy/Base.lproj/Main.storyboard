@@ -426,6 +426,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="Rcn-zf-fwg" id="amk-aS-5lV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msd-ly-bWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Un-sI-Hvy" userLabel="Exit" sceneMemberID="exit"/>

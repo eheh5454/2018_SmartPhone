@@ -10,6 +10,8 @@ import UIKit
 
 class BookmarkTableViewController: UITableViewController {
     
+    @IBOutlet var table: UITableView!
+    
     var posts:[String] = ["","",""]
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection numberOfRowsInSectionsection: Int) -> Int
@@ -24,9 +26,13 @@ class BookmarkTableViewController: UITableViewController {
         return cell
     }
     
+    func reload(){
+        self.table.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

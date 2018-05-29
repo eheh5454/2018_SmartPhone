@@ -14,7 +14,7 @@ class DetailPharmacyTableViewController: UITableViewController, XMLParserDelegat
     @IBAction func AddToBookmark(_ sender: Any) {
         let bookmark = BookmarkTableViewController()
         bookmark.posts.append(posts[0])
-        
+        bookmark.reload()
         print("add sucess!")
     }
     

@@ -133,6 +133,12 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "segueToMapView"{
+            if let mapViewController = segue.destination as? MapViewController {
+                mapViewController.posts = posts
+            }
+        }
+    
         if segue.identifier == "segueToPharmacyDetail"{
             if let cell = sender as? UITableViewCell{
                 let indexPath = tbData.indexPath(for: cell)
