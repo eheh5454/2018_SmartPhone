@@ -12,7 +12,7 @@ class BookmarkTableViewController: UITableViewController {
     
     @IBOutlet var table: UITableView!
     
-    var posts:[String] = ["","",""]
+    var posts = NSMutableArray()
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection numberOfRowsInSectionsection: Int) -> Int
     {
@@ -22,12 +22,12 @@ class BookmarkTableViewController: UITableViewController {
     override func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkcell", for: indexPath)
-        cell.textLabel?.text = posts[indexPath.row]
+        cell.textLabel?.text = posts[indexPath.row] as! String
         return cell
     }
     
     func reload(){
-        self.table.reloadData()
+        table!.reloadData()
     }
     
     override func viewDidLoad() {
