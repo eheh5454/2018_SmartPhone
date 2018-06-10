@@ -128,7 +128,6 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
             NSString as String
         cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "dutyMapimg") as!
             NSString as String
-        
         return cell
     }
     

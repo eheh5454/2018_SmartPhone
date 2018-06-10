@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class BookmarkTableViewController: UITableViewController {
     
     @IBOutlet var table: UITableView!
@@ -22,18 +23,15 @@ class BookmarkTableViewController: UITableViewController {
     override func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkcell", for: indexPath)
-        cell.textLabel?.text = posts[indexPath.row] as! String
+        cell.textLabel?.text = posts[indexPath.row]
+            as! String
         return cell
     }
     
-    func reload(){
-        table!.reloadData()
-    }
+
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        
+        //super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -42,7 +40,7 @@ class BookmarkTableViewController: UITableViewController {
     }
     
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        //super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 

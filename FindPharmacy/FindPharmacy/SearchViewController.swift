@@ -9,24 +9,25 @@
 import UIKit
 import Speech
 
-class SearchViewController: UIViewController {
-    @IBOutlet weak var Search_City: UITextField!
+class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     @IBOutlet weak var Search_County_District: UITextField!
     
-    @IBOutlet weak var Start_City_Transcribe_Button: UIButton!
-    @IBOutlet weak var Stop_City_Transcribe_Button: UIButton!
+    @IBOutlet weak var Start_County_District_Transcribe_Button: UIButton!
+    @IBOutlet weak var Stop_County_District_Transcribe_Button: UIButton!
     
-    @IBAction func Start_City_transcribe(_ sender: Any) {
-        Start_City_Transcribe_Button.isEnabled = false
-        Stop_City_Transcribe_Button.isEnabled = true
+    @IBOutlet weak var pickerview: UIPickerView!
+    
+    @IBAction func Start_County_District_transcribe(_ sender: Any) {
+        Start_County_District_Transcribe_Button.isEnabled = false
+        Stop_County_District_Transcribe_Button.isEnabled = true
         try! startSession()
     }
-    @IBAction func Stop_City_transcribe(_ sender: Any) {
+    @IBAction func Stop_County_District_transcribe(_ sender: Any) {
         if audioEngine.isRunning {
             audioEngine.stop()
             speechRecognitionRequest?.endAudio()
-            Start_City_Transcribe_Button.isEnabled = true
-            Stop_City_Transcribe_Button.isEnabled = false
+            Start_County_District_Transcribe_Button.isEnabled = true
+            Stop_County_District_Transcribe_Button.isEnabled = false
         }
     }
     
@@ -39,9 +40,14 @@ class SearchViewController: UIViewController {
     var count_district = ""
     var count_district_utf8 = ""
     
+    var pickerDataSource = ["서울특별시","부산광역시","대구광역시","인천광역시","광주광역시","대전광역시",
+                            "울산광역시","세종특별자치시","경기도","강원도","충청북도","충청남도","전라북도",
+                            "전라남도","경상북도","경상남도","제주특별자치도"]
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        city = Search_City.text!
+        //city = Search_City.text!
+        //city = pickerDataSource[pickerview.dids]
         city_utf8 = city.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         count_district = Search_County_District.text!
         count_district_utf8 = count_district.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
@@ -86,7 +92,7 @@ class SearchViewController: UIViewController {
             
             if let result = result {
                 
-                self.Search_City.text = result.bestTranscription.formattedString
+                self.Search_County_District.text = result.bestTranscription.formattedString
                 finished = result.isFinal
             }
             
@@ -97,7 +103,7 @@ class SearchViewController: UIViewController {
                 self.speechRecognitionRequest = nil
                 self.speechRecognitionTask = nil
                 
-                self.Start_City_Transcribe_Button.isEnabled = true
+                self.Start_County_District_Transcribe_Button.isEnabled = true
             }
         }
         let recordingFormat = inputNode.outputFormat(forBus: 0)
@@ -116,27 +122,46 @@ class SearchViewController: UIViewController {
             OperationQueue.main.addOperation {
                 switch authStatus {
                 case .authorized:
-                    self.Start_City_Transcribe_Button.isEnabled = true
+                    self.Start_County_District_Transcribe_Button.isEnabled = true
                     
                 case .denied:
-                    self.Start_City_Transcribe_Button.isEnabled = false
-                    self.Start_City_Transcribe_Button.setTitle("Speech recognition access denied by user", for: .disabled)
+                    self.Start_County_District_Transcribe_Button.isEnabled = false
+                    self.Start_County_District_Transcribe_Button.setTitle("Speech recognition access denied by user", for: .disabled)
                     
                 case .restricted:
-                    self.Start_City_Transcribe_Button.isEnabled = false
-                    self.Start_City_Transcribe_Button.setTitle("Speech recognition restricted on device", for: .disabled)
+                    self.Start_County_District_Transcribe_Button.isEnabled = false
+                    self.Start_County_District_Transcribe_Button.setTitle("Speech recognition restricted on device", for: .disabled)
                     
                 case .notDetermined:
-                    self.Start_City_Transcribe_Button.isEnabled = false
-                    self.Start_City_Transcribe_Button.setTitle("Speech recognition not authorized", for: .disabled)
+                    self.Start_County_District_Transcribe_Button.isEnabled = false
+                    self.Start_County_District_Transcribe_Button.setTitle("Speech recognition not authorized", for: .disabled)
                 }
             }
         }
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerDataSource.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerDataSource[row]
+    }
+    
+    //시 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        city = pickerDataSource[row]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         authorizeSR()
+        self.pickerview.delegate = self;
+        self.pickerview.dataSource = self;
 
         // Do any additional setup after loading the view.
     }
