@@ -12,9 +12,14 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
+    var lat:String = ""
+    var lon:String = ""
+    
     var posts = NSMutableArray()
     
-    let regionRadius:CLLocationDistance = 5000
+    let regionRadius:CLLocationDistance = 10000
+    
+    var initialLocation:CLLocation?
     
     func centerMapOnLocation(location: CLLocation){
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
@@ -62,8 +67,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let initialLocation = CLLocation(latitude: 37.462085665425015, longitude: 126.7086477914506)
-        centerMapOnLocation(location: initialLocation)
+        //initialLocation = CLLocation(latitude: 37.462085665425015, longitude: 126.7086477914506)
+        initialLocation = CLLocation(latitude: Double(lat)!, longitude: Double(lon)!)
+        centerMapOnLocation(location: initialLocation!)
         mapView.delegate = self
         loadInitialData()
         mapView.addAnnotations(pharmacys)

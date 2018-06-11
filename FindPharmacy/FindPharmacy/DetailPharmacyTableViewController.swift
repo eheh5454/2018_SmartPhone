@@ -13,7 +13,7 @@ class DetailPharmacyTableViewController: UITableViewController, XMLParserDelegat
     @IBOutlet var detailTableView: UITableView!
     
     @IBAction func AddToBookmark(_ sender: Any) {
-
+        cposts.add(posts[0])
     }
     
     var url: String?
@@ -155,11 +155,4 @@ class DetailPharmacyTableViewController: UITableViewController, XMLParserDelegat
         return posts.count
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if segue.identifier == "segueToBookmark"{
-            if let bookmarkcontroller = segue.destination as? BookmarkTableViewController{
-                bookmarkcontroller.posts.add(posts[0])
-            }
-        }
-    }
 }

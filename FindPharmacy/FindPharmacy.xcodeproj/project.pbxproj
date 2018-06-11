@@ -8,15 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		344C27BD20BA7CA0001345E7 /* DetailPharmacyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C27BC20BA7CA0001345E7 /* DetailPharmacyTableViewController.swift */; };
-		344C27C320BBDF61001345E7 /* Comic_Andy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 344C27C220BBDC55001345E7 /* Comic_Andy.ttf */; };
-		344C27CA20BBEC05001345E7 /* A아쿠아리움.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 344C27C920BBEC03001345E7 /* A아쿠아리움.ttf */; };
 		344C27CC20BC1479001345E7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C27CB20BC1479001345E7 /* MapViewController.swift */; };
 		344C27CE20BC1D4E001345E7 /* Pharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C27CD20BC1D4E001345E7 /* Pharmacy.swift */; };
-		344C27D020BC27FF001345E7 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C27CF20BC27FF001345E7 /* BookmarkTableViewController.swift */; };
+		344C281020CE0D5D001345E7 /* medicine2.png in Resources */ = {isa = PBXBuildFile; fileRef = 344C280F20CE0D5D001345E7 /* medicine2.png */; };
+		3470B1C420CE13E6002C3949 /* background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3470B1C320CE13E6002C3949 /* background2.jpg */; };
+		3470B1C620CE1718002C3949 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470B1C520CE1718002C3949 /* Config.swift */; };
+		3470B1CA20CE8F2C002C3949 /* Search_Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 3470B1C920CE8F2C002C3949 /* Search_Red.png */; };
+		3470B1CC20CE93DD002C3949 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470B1CB20CE93DC002C3949 /* AudioController.swift */; };
+		3470B1CF20CE9554002C3949 /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3470B1CE20CE9554002C3949 /* ding.mp3 */; };
+		3470B1D120CE982D002C3949 /* ExplodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470B1D020CE982D002C3949 /* ExplodeView.swift */; };
+		3470B1D320CEB0A5002C3949 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3470B1D220CEB0A5002C3949 /* particle.png */; };
 		347FA77120AD6EA00010AF41 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347FA77020AD6EA00010AF41 /* SearchViewController.swift */; };
 		347FA77320B165980010AF41 /* ViewController_Pharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347FA77220B165980010AF41 /* ViewController_Pharmacy.swift */; };
 		34DC867920A2D9F700487C3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC867820A2D9F700487C3A /* AppDelegate.swift */; };
-		34DC867B20A2D9F700487C3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC867A20A2D9F700487C3A /* ViewController.swift */; };
 		34DC867E20A2D9F700487C3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34DC867C20A2D9F700487C3A /* Main.storyboard */; };
 		34DC868020A2D9F700487C3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34DC867F20A2D9F700487C3A /* Assets.xcassets */; };
 		34DC868320A2D9F700487C3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34DC868120A2D9F700487C3A /* LaunchScreen.storyboard */; };
@@ -24,16 +28,20 @@
 
 /* Begin PBXFileReference section */
 		344C27BC20BA7CA0001345E7 /* DetailPharmacyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPharmacyTableViewController.swift; sourceTree = "<group>"; };
-		344C27C220BBDC55001345E7 /* Comic_Andy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comic_Andy.ttf; sourceTree = "<group>"; };
-		344C27C920BBEC03001345E7 /* A아쿠아리움.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "A아쿠아리움.ttf"; path = "FindPharmacy/A아쿠아리움.ttf"; sourceTree = SOURCE_ROOT; };
 		344C27CB20BC1479001345E7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		344C27CD20BC1D4E001345E7 /* Pharmacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pharmacy.swift; sourceTree = "<group>"; };
-		344C27CF20BC27FF001345E7 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
+		344C280F20CE0D5D001345E7 /* medicine2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medicine2.png; sourceTree = "<group>"; };
+		3470B1C320CE13E6002C3949 /* background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpg; sourceTree = "<group>"; };
+		3470B1C520CE1718002C3949 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		3470B1C920CE8F2C002C3949 /* Search_Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search_Red.png; sourceTree = "<group>"; };
+		3470B1CB20CE93DC002C3949 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		3470B1CE20CE9554002C3949 /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
+		3470B1D020CE982D002C3949 /* ExplodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplodeView.swift; sourceTree = "<group>"; };
+		3470B1D220CEB0A5002C3949 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
 		347FA77020AD6EA00010AF41 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		347FA77220B165980010AF41 /* ViewController_Pharmacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Pharmacy.swift; sourceTree = "<group>"; };
 		34DC867520A2D9F700487C3A /* FindPharmacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindPharmacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DC867820A2D9F700487C3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		34DC867A20A2D9F700487C3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34DC867D20A2D9F700487C3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34DC867F20A2D9F700487C3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34DC868220A2D9F700487C3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,13 +59,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		344C27C420BBEB2E001345E7 /* Fonts */ = {
+		344C280A20CE0AD0001345E7 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				344C27C920BBEC03001345E7 /* A아쿠아리움.ttf */,
-				344C27C220BBDC55001345E7 /* Comic_Andy.ttf */,
+				3470B1D220CEB0A5002C3949 /* particle.png */,
+				3470B1C920CE8F2C002C3949 /* Search_Red.png */,
+				344C280F20CE0D5D001345E7 /* medicine2.png */,
+				3470B1C320CE13E6002C3949 /* background2.jpg */,
 			);
-			path = Fonts;
+			path = image;
+			sourceTree = "<group>";
+		};
+		3470B1CD20CE9548002C3949 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				3470B1CE20CE9554002C3949 /* ding.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		34DC866C20A2D9F700487C3A = {
@@ -79,19 +97,21 @@
 		34DC867720A2D9F700487C3A /* FindPharmacy */ = {
 			isa = PBXGroup;
 			children = (
-				344C27C420BBEB2E001345E7 /* Fonts */,
+				3470B1CD20CE9548002C3949 /* Audio */,
+				344C280A20CE0AD0001345E7 /* image */,
 				34DC867820A2D9F700487C3A /* AppDelegate.swift */,
-				34DC867A20A2D9F700487C3A /* ViewController.swift */,
 				34DC867C20A2D9F700487C3A /* Main.storyboard */,
 				34DC867F20A2D9F700487C3A /* Assets.xcassets */,
 				34DC868120A2D9F700487C3A /* LaunchScreen.storyboard */,
 				34DC868420A2D9F700487C3A /* Info.plist */,
+				3470B1C520CE1718002C3949 /* Config.swift */,
+				3470B1D020CE982D002C3949 /* ExplodeView.swift */,
 				347FA77020AD6EA00010AF41 /* SearchViewController.swift */,
 				347FA77220B165980010AF41 /* ViewController_Pharmacy.swift */,
 				344C27BC20BA7CA0001345E7 /* DetailPharmacyTableViewController.swift */,
+				3470B1CB20CE93DC002C3949 /* AudioController.swift */,
 				344C27CB20BC1479001345E7 /* MapViewController.swift */,
 				344C27CD20BC1D4E001345E7 /* Pharmacy.swift */,
-				344C27CF20BC27FF001345E7 /* BookmarkTableViewController.swift */,
 			);
 			path = FindPharmacy;
 			sourceTree = "<group>";
@@ -155,11 +175,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				344C27C320BBDF61001345E7 /* Comic_Andy.ttf in Resources */,
-				344C27CA20BBEC05001345E7 /* A아쿠아리움.ttf in Resources */,
 				34DC868320A2D9F700487C3A /* LaunchScreen.storyboard in Resources */,
+				3470B1CA20CE8F2C002C3949 /* Search_Red.png in Resources */,
+				3470B1CF20CE9554002C3949 /* ding.mp3 in Resources */,
+				344C281020CE0D5D001345E7 /* medicine2.png in Resources */,
 				34DC868020A2D9F700487C3A /* Assets.xcassets in Resources */,
+				3470B1C420CE13E6002C3949 /* background2.jpg in Resources */,
 				34DC867E20A2D9F700487C3A /* Main.storyboard in Resources */,
+				3470B1D320CEB0A5002C3949 /* particle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,13 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3470B1CC20CE93DD002C3949 /* AudioController.swift in Sources */,
 				347FA77120AD6EA00010AF41 /* SearchViewController.swift in Sources */,
 				344C27CE20BC1D4E001345E7 /* Pharmacy.swift in Sources */,
 				344C27CC20BC1479001345E7 /* MapViewController.swift in Sources */,
-				344C27D020BC27FF001345E7 /* BookmarkTableViewController.swift in Sources */,
-				34DC867B20A2D9F700487C3A /* ViewController.swift in Sources */,
 				34DC867920A2D9F700487C3A /* AppDelegate.swift in Sources */,
+				3470B1D120CE982D002C3949 /* ExplodeView.swift in Sources */,
 				347FA77320B165980010AF41 /* ViewController_Pharmacy.swift in Sources */,
+				3470B1C620CE1718002C3949 /* Config.swift in Sources */,
 				344C27BD20BA7CA0001345E7 /* DetailPharmacyTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

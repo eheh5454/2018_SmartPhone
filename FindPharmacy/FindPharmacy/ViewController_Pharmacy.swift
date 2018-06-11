@@ -7,12 +7,30 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewDataSource {
     @IBOutlet weak var tbData: UITableView!
     
+    
     @IBAction func doneToPharmacyTable(segue:UIStoryboardSegue){
         
+    }
+    //이전페이지로 넘어가기
+    @IBAction func BeforePage(_ sender: Any) {
+        if (pageNum > 1){
+            pageNum -= 1
+            url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&Q0=\(city_utf8)&Q1=\(count_district_utf8)&QT=1&ORD=NAME&pageNo=\(pageNum)&startPage=1&numOfRows=20&pageSize=20"
+            beginParsing()
+        }
+        
+    }
+    
+    //다음페이지로 넘어가기
+    @IBAction func NextPage(_ sender: Any) {
+        pageNum += 1
+        url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&Q0=\(city_utf8)&Q1=\(count_district_utf8)&QT=1&ORD=NAME&pageNo=\(pageNum)&startPage=1&numOfRows=20&pageSize=20"
+        beginParsing()
     }
     
     var parser = XMLParser()
@@ -29,12 +47,18 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
     var XPos = NSMutableString()
     var YPos = NSMutableString()
     
+    var city_utf8 = ""
+    var count_district_utf8 = ""
+    
     var url:String?
     
     var pharmacycode = ""
     
+    var pageNum:Int = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&Q0=\(city_utf8)&Q1=\(count_district_utf8)&QT=1&ORD=NAME&pageNo=1&startPage=1&numOfRows=20&pageSize=20"
         beginParsing()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -131,10 +155,14 @@ class ViewController_Pharmacy: UIViewController, XMLParserDelegate, UITableViewD
         return cell
     }
     
+    //맵뷰로 넘어가면서 세그를 확인하고 첫번째 약국의 경도와 위도를 넘겨준다.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "segueToMapView"{
             if let mapViewController = segue.destination as? MapViewController {
                 mapViewController.posts = posts
+                mapViewController.lat = (posts[0] as AnyObject).value(forKey: "XPos") as! String
+                mapViewController.lon = (posts[0] as AnyObject).value(forKey: "YPos") as! String
+
             }
         }
     

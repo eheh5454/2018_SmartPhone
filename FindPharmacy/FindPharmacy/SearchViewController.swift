@@ -15,7 +15,16 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var Start_County_District_Transcribe_Button: UIButton!
     @IBOutlet weak var Stop_County_District_Transcribe_Button: UIButton!
     
+    @IBOutlet weak var SearchButton: UIButton!
     @IBOutlet weak var pickerview: UIPickerView!
+    
+    @IBAction func Search(_ sender: Any) {
+        audioController.playerEffect(name: SoundDing)
+        //파티클
+        let explore = ExplodeView(frame:CGRect(x:(SearchButton.imageView?.center.x)!, y:(SearchButton.imageView?.center.y)!,width:10,height:10))
+        SearchButton.imageView?.superview?.addSubview(explore)
+        SearchButton.imageView?.superview?.sendSubview(toBack: explore)
+    }
     
     @IBAction func Start_County_District_transcribe(_ sender: Any) {
         Start_County_District_Transcribe_Button.isEnabled = false
@@ -32,8 +41,17 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func doneToSearch(segue:UIStoryboardSegue){
-        
     }
+    
+    var audioController:AudioController
+    required init?(coder aDecoder: NSCoder) {
+        //AudioController 객체를 생성하고 오디오 파일 preload에서 dictionary에 넣는다
+        audioController = AudioController()
+        audioController.preloadAudioEffects(audioFileNames: AudioEffectFiles)
+        super.init(coder: aDecoder)
+    }
+
+    
     var city = ""
     var city_utf8 = ""
     
@@ -55,7 +73,8 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             if let navController = segue.destination as? UINavigationController{
                 if let viewController = navController.topViewController as?
                     ViewController_Pharmacy{
-                    viewController.url = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=ZFUVcAyJirpdcu5jQmz0TDQ2rLktWOxLAhz9E5nehG6dht019PS7gjG64Amz4NwEe1cmeBeDOQDnmoAGifCvfw%3D%3D&Q0=\(city_utf8)&Q1=\(count_district_utf8)&QT=1&ORD=NAME&pageNo=1&startPage=1&numOfRows=20&pageSize=20"
+                    viewController.city_utf8 = city_utf8
+                    viewController.count_district_utf8 = count_district_utf8
                 }
             }
         }
